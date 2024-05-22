@@ -191,7 +191,7 @@ $$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 
 
 
-5. $\binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}$
+## 5. $\binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}$
 
 要证明组合数恒等式 $\binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}$，可以使用简单的计数法。这个证明也称为组合恒等式的 **代数证明**。
 
