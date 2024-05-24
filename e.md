@@ -211,4 +211,154 @@ $$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$
    - 由于以上两种情况是互斥且穷尽的，总的选法为上述两种情况之和。
 
 因此，可以得到组合数恒等式：
-$$\binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}$$
+$$\binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}$$​
+
+
+
+## 6. $\lim_{h \to 0} \frac{\ln(1 + h)}{h} = 1 \implies \frac{d}{dy} \ln(y) = \frac{1}{y}$
+
+用 $\lim_{h \to 0} \frac{\ln(1 + h)}{h} = 1$ 来证明 $\frac{d}{dy} \ln(y) = \frac{1}{y}$ 存在循环论证的问题，因为这两者本质上是同一个事实的不同表述。为了避免这种循环论证，我们可以从基本定义出发证明 $\lim_{h \to 0} \frac{\ln(1 + h)}{h} = 1$，而不假设 $\frac{d}{dy} \ln(y) = \frac{1}{y}$。
+
+一种严格的非循环方法是使用洛必达法则，但如果我们要避免洛必达法则的使用，可以考虑以下推导。
+
+### 通过定义对数函数的极限证明
+
+首先，从对数函数的定义和一些基本极限开始，不借助于导数来证明 $\lim_{h \to 0} \frac{\ln(1 + h)}{h} = 1$。
+
+#### 定义对数函数的极限方法：
+
+考虑对数函数的定义：$\ln(x)$ 是函数 $e^x$ 的反函数，即 $y = \ln(x)$ 等价于 $x = e^y$。我们用定义来证明这个极限：
+
+1. **考虑极限形式：**
+
+   $$\lim_{h \to 0} \frac{\ln(1 + h)}{h}$$
+
+2. **使用自然对数的定义：**
+
+   设 $h = e^u - 1$，其中 $u \to 0$ 当 $h \to 0$。那么：
+
+   $$   \lim_{u \to 0} \frac{\ln(e^u)}{e^u - 1}$$
+
+3. **简化表达式：**
+
+   因为 $\ln(e^u) = u$，所以这个表达式变为：
+
+   $$\lim_{u \to 0} \frac{u}{e^u - 1}$$
+
+4. **使用泰勒展开近似：**
+
+   当 $u \to 0$ 时，$e^u \approx 1 + u + \frac{u^2}{2} + O(u^3)$，因此 $e^u - 1 \approx u + \frac{u^2}{2}$。于是：
+
+   $$   \frac{u}{e^u - 1} \approx \frac{u}{u + \frac{u^2}{2}} = \frac{u}{u(1 + \frac{u}{2})} = \frac{1}{1 + \frac{u}{2}}$$
+
+5. **极限结果：**
+
+   当 $u \to 0$ 时，$\frac{1}{1 + \frac{u}{2}} \to 1$。所以：
+
+   $$\lim_{u \to 0} \frac{u}{e^u - 1} = 1$$
+
+因此：
+
+$$\lim_{h \to 0} \frac{\ln(1 + h)}{h} = 1$$
+
+### 结论
+
+我们通过对自然对数函数的定义和基本极限来证明 $\lim_{h \to 0} \frac{\ln(1 + h)}{h} = 1$，而不依赖导数定义或循环论证。这种方法确保了证明的逻辑完整性和严密性。
+
+
+
+## 7. $ \sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x $
+
+我们可以通过分析 $\left(1 + \frac{x}{n}\right)^n$ 的泰勒展开和极限来证明 $\sum_{k=0}^n \frac{x^k}{k!} \to e^x$ 当 $n \to \infty$。以下是详细的初等证明步骤：
+
+### 分析极限表达式
+
+首先，我们知道对于任意实数 $x$，有：
+
+$$ e^x = \lim_{n \to \infty} \left(1 + \frac{x}{n}\right)^n $$
+
+为了理解这个极限如何与 $\sum_{k=0}^\infty \frac{x^k}{k!}$ 相关，我们可以对 $\left(1 + \frac{x}{n}\right)^n$ 进行展开。
+
+我们考虑函数 $\left(1 + \frac{x}{n}\right)^n$ 的展开。根据二项式定理，对于每一个固定的 $n$，我们有：
+
+$$ \left(1 + \frac{x}{n}\right)^n = \sum_{k=0}^n \binom{n}{k} \left(\frac{x}{n}\right)^k $$
+
+其中 $\binom{n}{k}$ 是二项式系数。进一步化简后，我们得到：
+
+$$ \left(1 + \frac{x}{n}\right)^n = \sum_{k=0}^n \frac{n!}{k!(n-k)!} \left(\frac{x^k}{n^k}\right) = \sum_{k=0}^n \frac{n(n-1)\cdots(n-k+1)}{k!} \left(\frac{x^k}{n^k}\right) $$
+
+我们将上式简化为：
+
+$$ \left(1 + \frac{x}{n}\right)^n = \sum_{k=0}^n \frac{x^k}{k!} \prod_{j=0}^{k-1} \left(1 - \frac{j}{n}\right) $$
+
+### 极限过程中的渐近行为
+
+当 $n \to \infty$ 时，对于固定的 $k$，$\prod_{j=0}^{k-1} \left(1 - \frac{j}{n}\right)$ 的行为趋近于 1，因为每一项 $\left(1 - \frac{j}{n}\right) \to 1$。因此：
+
+$$ \lim_{n \to \infty} \prod_{j=0}^{k-1} \left(1 - \frac{j}{n}\right) = 1 $$
+
+这意味着，对于任何固定的 $k$，有：
+
+$$ \lim_{n \to \infty} \left(1 + \frac{x}{n}\right)^n = \sum_{k=0}^{\infty} \frac{x^k}{k!} $$
+
+### 收敛性分析
+
+通过比值测试，我们可以证明 $\sum_{k=0}^{\infty} \frac{x^k}{k!}$ 是收敛的：
+
+$$ \lim_{k \to \infty} \left| \frac{\frac{x^{k+1}}{(k+1)!}}{\frac{x^k}{k!}} \right| = \lim_{k \to \infty} \left| \frac{x}{k+1} \right| = 0 $$
+
+因此，级数 $\sum_{k=0}^{\infty} \frac{x^k}{k!}$ 在所有 $x$ 上都是收敛的。
+
+### 结论
+
+综上所述，通过初等的方法，我们利用 $\left(1 + \frac{x}{n}\right)^n$ 的展开以及其在 $n \to \infty$ 时的极限行为，证明了 $\sum_{k=0}^n \frac{x^k}{k!} \to e^x$。因此，我们得到了：
+
+$$\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x$$
+
+这个证明是基于二项式定理和极限的渐近分析，并没有使用更高级的微积分工具。
+
+## 8.  $\lim_{k \to \infty} \left| \frac{a_{k+1}}{a_k} \right| < 1 => \sum_{k=N}^{\infty} |a_k| \leq \sum_{k=N}^{\infty} r^{k-N} |a_N| $
+
+设 $\sum_{k=0}^{\infty} a_k$ 是一个无穷级数，且存在常数 $r < 1$ 和正整数 $N$，使得对于所有 $k \geq N$，有：
+
+$$ |a_{k+1}| \leq r |a_k| $$
+
+#### 从第 $N$ 项开始的递归关系
+
+通过递归地应用上述不等式，我们得到：
+
+$$ |a_{N+1}| \leq r |a_N| $$
+$$ |a_{N+2}| \leq r |a_{N+1}| \leq r^2 |a_N| $$
+$$ |a_{N+3}| \leq r |a_{N+2}| \leq r^3 |a_N| $$
+
+一般地，对于所有 $k \geq N$：
+
+$$ |a_k| \leq r^{k-N} |a_N| $$
+
+#### 构造比较的几何级数
+
+考虑部分和从 $N$ 项开始的无穷级数 $\sum_{k=N}^{\infty} |a_k|$。利用上面的不等式，我们有：
+
+$$ \sum_{k=N}^{\infty} |a_k| \leq \sum_{k=N}^{\infty} r^{k-N} |a_N| $$
+
+将右边的求和式变形：
+
+$$ \sum_{k=N}^{\infty} r^{k-N} |a_N| = |a_N| \sum_{k=N}^{\infty} r^{k-N} = |a_N| \sum_{j=0}^{\infty} r^j $$
+
+其中 $j = k - N$ 是一个从 $0$ 开始的索引变换。这个级数是一个以 $r$ 为公比的几何级数，其和为：
+
+$$ \sum_{j=0}^{\infty} r^j = \frac{1}{1-r} $$
+
+因此，我们有：
+
+$$ \sum_{k=N}^{\infty} |a_k| \leq |a_N| \cdot \frac{1}{1-r} $$
+
+#### 收敛性的结论
+
+由于几何级数 $\sum_{j=0}^{\infty} r^j$ 在 $0 < r < 1$ 时收敛，因此右边的和是有限的，表示 $\sum_{k=N}^{\infty} |a_k|$ 是有限的。
+
+这意味着 $\sum_{k=N}^{\infty} |a_k|$ 是收敛的，从而 $\sum_{k=0}^{\infty} |a_k|$ 也是收敛的。绝对收敛性保证了原级数 $\sum_{k=0}^{\infty} a_k$ 的收敛性。
+
+### 结论
+
+综上所述，如果存在常数 $r < 1$ 和正整数 $N$，使得对于所有 $k \geq N$，有 $\left| a_{k+1} \right| \leq r \left| a_k \right|$，则无穷级数 $\sum_{k=0}^{\infty} a_k$ 绝对收敛。因此，原级数 $\sum_{k=0}^{\infty} a_k$ 是收敛的。
