@@ -1,4 +1,24 @@
-## 1.  $\left(1 + \frac{r}{n}\right)^n$ 在 $n$ 趋向无穷大时会趋近于 $e^r$ 
+## 目录
+
+1. [$(1 + \frac{r}{n})^n$ 在 $n$ 趋向无穷大时会趋近于 $e^r$](#1--在--趋向无穷大时会趋近于)
+
+2. [当 $n$ 趋向于无穷大时 $(1 + \frac{1}{n})^n \approx \sum_{k=0}^n \frac{1}{k!}$](#2-当--趋向于无穷大时)
+
+3. [$(a + b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k} b^k$](#3)
+
+4. [$\binom{n}{k} = \frac{n!}{k!(n-k)!}$](#4)
+
+5. [$\binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}$](#5)
+
+6. [$\lim_{h \to 0} \frac{\ln(1 + h)}{h} = 1 \implies \frac{d}{dy} \ln(y) = \frac{1}{y}$](#6)
+
+7. [$\sum_{k=0}^{\infty} \frac{x^k}{k!} = e^x$](#7)
+
+8. [$\lim_{k \to \infty} \left| \frac{a_{k+1}}{a_k} \right| < 1 => \sum_{k=N}^{\infty} |a_k| \leq \sum_{k=N}^{\infty} r^{k-N} |a_N|$​](#8)
+
+   
+
+## 1. $\left(1 + \frac{r}{n}\right)^n$ 在 $n$ 趋向无穷大时会趋近于 $e^r$
 
 ### 1. 定义自然对数底数 $e$
 首先，我们定义自然对数的底数 $e$ 为：
